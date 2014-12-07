@@ -6,7 +6,7 @@ var ObjectID = require('mongodb').ObjectID,
     DBRef = require('mongodb').DBRef,
 
     getDBRef = function(collectionName, id) {
-        return new DBRef(collectionName, id, 'populator_test');
+        return new DBRef(collectionName, id, 'music-group');
     };
 
 module.exports = {
