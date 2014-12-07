@@ -21,6 +21,7 @@
   "devDependencies": {
     "expect.js": "^0.3.1",
     "mocha": "^2.0.1",
+    "node.populator-mongodb": "git://github.com/glenpike/node.populator-mongodb.git",
     "superagent": "^0.21.0"
   }
 }
