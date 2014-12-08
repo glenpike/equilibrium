@@ -11,20 +11,20 @@ var ObjectID = require('mongodb').ObjectID,
 
 module.exports = {
     user: [{
-        _id: new ObjectID('000000000000000000000001'),
+        _id: 'george@monserrat.com',
         name: 'George Martin',
-        email: 'george@monserrat.com',
+        password: 'george',
         created: new Date('12, 01, 2014')
     },
     {
-        _id: new ObjectID('000000000000000000000002'),
+        _id: 'lee@theark.com',
         name: 'Lee Scratch Perry',
-        email: 'lee@theark.com',
+        password: 'lee',
         created: new Date('12, 02, 2014')
     }],
 
     types: [{
-        _id: new ObjectID('100000000000000000000001'),
+        _id: 1,
         name: '4 Band EQ',
         created: new Date('12, 01, 2014'),
         fields: {
@@ -32,21 +32,21 @@ module.exports = {
         }
     },
     {
-        _id: new ObjectID('100000000000000000000002'),
+        _id: 2,
         name: 'Compressor',
         created: new Date('12, 01, 2014')
     },
     {
-        _id: new ObjectID('100000000000000000000003'),
+        _id: 3,
         name: 'Delay',
         created: new Date('12, 01, 2014')
     }],
 
     presets: [{
-        _id: new ObjectID('200000000000000000000001'),
+        _id: 1,
         name: 'Kick Drum EQ',
-        _user: getDBRef('users', '000000000000000000000001'),
-        _type: getDBRef('types', '100000000000000000000001'),
+        _user: 'george@monserrat.com',
+        _type: 1,
         created: new Date('12, 03, 2014'),
         settings: {
             'Low band' : 'On',
@@ -66,10 +66,10 @@ module.exports = {
             'Hi gain' : '+4'
         }
     },{
-        _id: new ObjectID('200000000000000000000002'),
+        _id: 2,
         name: 'Rock Male Vocals EQ',
-        _user: getDBRef('users', '000000000000000000000001'),
-        _type: getDBRef('types', '100000000000000000000001'),
+        _user: 'george@monserrat.com',
+        _type: 1,
         created: new Date('12, 04, 2014'),
         settings: {
             'Low band' : 'On',
@@ -89,10 +89,10 @@ module.exports = {
             'Hi gain' : '+4'
         }
     },{
-        _id: new ObjectID('200000000000000000000003'),
+        _id: 3,
         name: 'Bass EQ',
-        _user: getDBRef('users', '000000000000000000000002'),
-        _type: getDBRef('types', '100000000000000000000001'),
+        _user: 'lee@theark.com',
+        _type: 1,
         created: new Date('12, 04, 2014'),
         settings: {
             'Low band' : 'On',
@@ -112,10 +112,10 @@ module.exports = {
             'Hi gain' : '-4'
         }
     },{
-        _id: new ObjectID('200000000000000000000004'),
+        _id: 4,
         name: 'Vocal Compressor EQ',
-        _user: getDBRef('users', '000000000000000000000002'),
-        _type: getDBRef('types', '100000000000000000000002'),
+        _user: 'lee@theark.com',
+        _type: 2,
         created: new Date('12, 04, 2014'),
         settings: {
             'Mode' : 'creative',
@@ -127,10 +127,10 @@ module.exports = {
             'Make up (dB)' : '8'
         }
     },{
-        _id: new ObjectID('200000000000000000000005'),
+        _id: 5,
         name: 'Dub delay',
-        _user: getDBRef('users', '000000000000000000000002'),
-        _type: getDBRef('types', '100000000000000000000003'),
+        _user: 'lee@theark.com',
+        _type: 3,
         created: new Date('12, 05, 2014'),
         settings: {
             'Delay' : '300ms',
