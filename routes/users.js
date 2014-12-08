@@ -1,8 +1,9 @@
 var express = require('express'),
     mongoskin = require('mongoskin'),
-    users = express.Router();
+    users = express.Router(),
+    dbConf = require('../config/database');
 
-var db = mongoskin.db('mongodb://@localhost:27017/music-group', {safe:true})
+var db = mongoskin.db(dbConf.url, {safe:true})
 
 //Every route requires the database...
 users.use('/', function(req, res, next) {
