@@ -11,7 +11,7 @@ describe('presets rest api tests', function() {
             .end(function(e, res) {
                 expect(e).to.eql(null)
                 expect(res.body.length).to.equal(data.presets.length)
-                expect(res.body.map(function(item) { return item._id})).to.contain('' + data.presets[0]._id)
+                expect(res.body.map(function(item) { return item._id})).to.contain(data.presets[0]._id)
                 done()
             })
     })
@@ -21,6 +21,7 @@ describe('presets rest api tests', function() {
         var preset = _.clone(data.presets[index])
 
         delete preset.settings
+        delete preset._id
 
         preset.settings = { A: 1, B: 'two', C: '3' }
 
