@@ -10,7 +10,7 @@ var ObjectID = require('mongodb').ObjectID,
     };
 
 module.exports = {
-    user: [{
+    users: [{
         _id: 'george@monserrat.com',
         name: 'George Martin',
         password: 'george',
