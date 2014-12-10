@@ -2,7 +2,8 @@ var LocalStrategy = require('passport-local').Strategy,
     mongoskin = require('mongoskin'),
     dbConf = require('./database'),
     db = mongoskin.db(dbConf.url, {safe:true}),
-    users = db.collection('users');
+    users = db.collection('users'),
+    bcrypt   = require('bcrypt-nodejs');
 
 
 function generateHash(password) {
@@ -16,7 +17,7 @@ function validPassword(password, compare) {
 
 module.exports = function(passport) {
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+        done(null, user._id);
     });
 
     // used to deserialize the user
@@ -36,7 +37,8 @@ module.exports = function(passport) {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        users.findOne({ 'local.email' :  email }, function(err, user) {
+        users.findById(email, function(err, user) {
+            //console.log('user ', user);
             // if there are any errors, return the error before anything else
             if (err)
                 return done(err);

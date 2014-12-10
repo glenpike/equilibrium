@@ -29,10 +29,21 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
+app.use(function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if ( req.url === '/login' || req.isAuthenticated()) {
+        return next();
+    }
+    // if they aren't redirect them to the home page
+    res.redirect('/login');
+})
+
 app.use('/presets', presets)
-app.use('/users', users)
-app.use('/types', types)
-app.use('/auth', auth)
+//TODO / FIXME - not public.
+//app.use('/users', users)
+//app.use('/types', types)
+app.use('/', auth)
 
 app.listen(3000)
 
