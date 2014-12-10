@@ -11,7 +11,7 @@ describe('auth rest api tests', function() {
             .get('http://localhost:3000/presets')
             .end(function(err, res) {
                 expect(err).to.be(null);
-                expect(res.redirects).to.eql(['http://localhost:3000/login'])
+                expect(res.redirects).to.eql(['http://localhost:3000/auth/login'])
                 expect(res.status).to.eql(200);
                 /* jshint  -W030 */
                 expect(res.headers['set-cookie']).to.exist;
@@ -22,7 +22,7 @@ describe('auth rest api tests', function() {
 
     it('should gain a session (cookies already set)', function(done) {
         agent
-            .get('http://localhost:3000/login')
+            .get('http://localhost:3000/auth/login')
             .end(function(err, res) {
                 expect(err).to.be(null);
                 expect(res.status).to.eql(200);
@@ -35,7 +35,7 @@ describe('auth rest api tests', function() {
 
     it('should have bad logins rejected', function(done) {
         agent
-            .post('http://localhost:3000/login')
+            .post('http://localhost:3000/auth/login')
                 .send({
                     email: 'test@dummy.com',
                     password: 'wrong'
@@ -44,8 +44,8 @@ describe('auth rest api tests', function() {
 
             function onResponse(err, res) {
                 expect(res.status).to.eql(200);
-                expect(res.redirects).to.eql(['http://localhost:3000/login'])
-                expect(res.text).to.contain('No user found.')
+                expect(res.redirects).to.eql(['http://localhost:3000/auth/login'])
+                expect(res.text).to.contain('type="password" name="password">')
                 return done();
             }
     });
@@ -54,10 +54,10 @@ describe('auth rest api tests', function() {
 
     it('should log the user out', function(done) {
         agent
-            .get('http://localhost:3000/logout')
+            .get('http://localhost:3000/auth/logout')
             .end(function(err, res) {
                 expect(err).to.be(null);
-                expect(res.redirects).to.eql(['http://localhost:3000/login'])
+                expect(res.redirects).to.eql(['http://localhost:3000/auth/login'])
                 expect(res.status).to.eql(200);
                 done();
             });
@@ -68,7 +68,7 @@ describe('auth rest api tests', function() {
             .get('http://localhost:3000/presets')
             .end(function(err, res) {
                 expect(err).to.be(null);
-                expect(res.redirects).to.eql(['http://localhost:3000/login'])
+                expect(res.redirects).to.eql(['http://localhost:3000/auth/login'])
                 expect(res.status).to.eql(200);
                 done();
             });

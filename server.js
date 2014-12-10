@@ -13,8 +13,9 @@ var express = require('express'),
     users = require('./routes/users'),
     types = require('./routes/types'),
     /* jshint  -W030 */
-    auth = require('./routes/auth')(passport);
+    auth = require('./routes/auth')(passport),
     /* jshint  +W030 */
+    path = require('path');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -28,19 +29,27 @@ app.use(session({
 
 app.set('view engine', 'hbs');
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
 app.use(function isLoggedIn(req, res, next) {
-    if ( req.url === '/login' || req.isAuthenticated()) {
+    console.log('isLoggedIn ', req.url)
+    if ( req.url === '/auth/login' || req.isAuthenticated()) {
         return next();
     }
-    res.redirect('/login');
+    res.redirect('/auth/login');
 })
 
 app.use('/presets', presets)
-app.use('/', auth)
+app.use('/auth', auth)
+
+app.use('/', function(req, res) {
+    console.log('hello')
+    res.render('main.hbs', { title: 'Presets' })
+})
 //TODO / FIXME - not public.
 //app.use('/users', users)
 //app.use('/types', types)
