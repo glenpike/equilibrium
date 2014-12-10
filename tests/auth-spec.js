@@ -1,27 +1,7 @@
-var superagent = require('superagent')
-var expect = require('expect.js')
-//var data = require('../data/test-data-1.js')
-var _ = require('lodash')
-var utils = require('./utils')
-
-// //TODO - make into shared function.
-// function loginUser(agent) {
-//     return function(done) {
-//         agent
-//             .post('http://localhost:3000/login')
-//             .send({
-//                 email: 'george@monserrat.com',
-//                 password: 'george'
-//             })
-//             .end(onResponse);
-
-//         function onResponse(err, res) {
-//             expect(res.redirects).to.eql(['http://localhost:3000/presets'])
-//             expect(res.status).to.eql(200);
-//             return done();
-//         }
-//     };
-// }
+var superagent = require('superagent'),
+    expect = require('expect.js'),
+    _ = require('lodash'),
+    utils = require('./utils');
 
 describe('auth rest api tests', function() {
     var agent = superagent.agent();
@@ -33,7 +13,9 @@ describe('auth rest api tests', function() {
                 expect(err).to.be(null);
                 expect(res.redirects).to.eql(['http://localhost:3000/login'])
                 expect(res.status).to.eql(200);
+                /* jshint  -W030 */
                 expect(res.headers['set-cookie']).to.exist;
+                /* jshint  +W030 */
                 done();
             });
     });
@@ -44,7 +26,9 @@ describe('auth rest api tests', function() {
             .end(function(err, res) {
                 expect(err).to.be(null);
                 expect(res.status).to.eql(200);
+                /* jshint  -W030 */
                 expect(res.headers['set-cookie']).to.not.exist;
+                /* jshint  +W030 */
                 done();
             });
     });
@@ -67,6 +51,7 @@ describe('auth rest api tests', function() {
     });
 
     it('should start with login', utils.loginUser(agent));
+
     it('should log the user out', function(done) {
         agent
             .get('http://localhost:3000/logout')
@@ -77,6 +62,7 @@ describe('auth rest api tests', function() {
                 done();
             });
     });
+
     it('should redirect the user to login', function(done) {
         agent
             .get('http://localhost:3000/presets')

@@ -1,3 +1,4 @@
+/* global require */
 var express = require('express'),
     app = express()
     bodyParser = require('body-parser'),
@@ -11,7 +12,9 @@ var express = require('express'),
     presets = require('./routes/presets'),
     users = require('./routes/users'),
     types = require('./routes/types'),
+    /* jshint  -W030 */
     auth = require('./routes/auth')(passport);
+    /* jshint  +W030 */
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -30,20 +33,17 @@ app.use(passport.session())
 app.use(flash())
 
 app.use(function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on
     if ( req.url === '/login' || req.isAuthenticated()) {
         return next();
     }
-    // if they aren't redirect them to the home page
     res.redirect('/login');
 })
 
 app.use('/presets', presets)
+app.use('/', auth)
 //TODO / FIXME - not public.
 //app.use('/users', users)
 //app.use('/types', types)
-app.use('/', auth)
 
 app.listen(3000)
 

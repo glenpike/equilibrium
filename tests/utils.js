@@ -13,7 +13,6 @@ module.exports = {
                 .end(onResponse);
 
             function onResponse(err, res) {
-                console.log('logged in')
                 expect(res.redirects).to.eql(['http://localhost:3000/presets'])
                 expect(res.status).to.eql(200);
                 return done();

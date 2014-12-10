@@ -31,5 +31,10 @@
     "mocha": "^2.0.1",
     "node.populator-mongodb": "git://github.com/glenpike/node.populator-mongodb.git",
     "superagent": "^0.21.0"
+  },
+
+  "jshintConfig": {
+    "predef": [ "require" ],
+    "asi": true
   }
 }
