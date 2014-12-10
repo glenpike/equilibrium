@@ -19,11 +19,5 @@ module.exports = function(passport) {
         failureFlash : true // allow flash messages
     }));
 
-    // auth.get('/profile', function(req, res) {
-    //     res.render('profile.hbs', {
-    //         user : req.user // get the user out of session and pass to template
-    //     });
-    // });
-
     return auth;
 }
