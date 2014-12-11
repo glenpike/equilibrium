@@ -1,10 +1,17 @@
 #Dirty demo for an API to CRUD presets
 
+Requires MongoDB, nodejs and bower
+(npm install -g bower)
+
 ##usage
 
 Install all the node modules with:
 
 npm install
+
+Install bower modules (client JS libs) with:
+
+bower install
 
 Populate a mongo DB called 'music-group' with:
 
