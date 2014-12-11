@@ -21,6 +21,7 @@
     "express": "^4.10.4",
     "express-session": "^1.9.3",
     "lodash": "^2.4.1",
+    "mongodb": "^1.4.23",
     "mongoskin": "^1.4.4",
     "morgan": "^1.5.0",
     "passport": "^0.2.1",
@@ -32,9 +33,10 @@
     "node.populator-mongodb": "git://github.com/glenpike/node.populator-mongodb.git",
     "superagent": "^0.21.0"
   },
-
   "jshintConfig": {
-    "predef": [ "require" ],
+    "predef": [
+      "require"
+    ],
     "asi": true
   }
 }
