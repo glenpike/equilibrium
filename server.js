@@ -11,6 +11,7 @@ var express = require('express'),
     require('./config/passport')(passport),
     presets = require('./routes/presets'),
     users = require('./routes/users'),
+    user = require('./routes/user'),
     types = require('./routes/types'),
     /* jshint  -W030 */
     auth = require('./routes/auth')(passport),
@@ -45,10 +46,11 @@ app.use(function isLoggedIn(req, res, next) {
 
 app.use('/presets', presets)
 app.use('/auth', auth)
+app.use('/user', user)
 
 app.use('/', function(req, res) {
     console.log('hello')
-    res.render('main.hbs', { title: 'Presets' })
+    res.render('main.hbs')
 })
 //TODO / FIXME - not public.
 //app.use('/users', users)
