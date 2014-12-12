@@ -83,7 +83,7 @@ define([
         this.router = new Marionette.AppRouter({
             appRoutes: {
                 // 'dashboard/:edit':'viewPage',
-                'preset/:id': 'viewPreset',
+                'presets/:id': 'viewPreset',
                 '*other': 'defaultView'
             },
             controller: this

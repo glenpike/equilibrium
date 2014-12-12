@@ -13,6 +13,14 @@ require.config({
                              'backbone.babysitter',
         marionette: 'vendor/marionette/lib/backbone.marionette',
         hbs:   'vendor/require-handlebars-plugin/hbs',
+        moment: 'vendor/moment/moment'
+    },
+
+    hbs: {
+        helperDirectory: 'common/helpers/',
+    },
+    moment: {
+        noGlobal: true
     },
 
     shim: {
@@ -26,6 +34,9 @@ require.config({
         marionette: {
             deps: ['backbone'],
             exports: 'Backbone.Marionette'
+        },
+        hbs: {
+            deps: ['underscore']
         }
     }
 });

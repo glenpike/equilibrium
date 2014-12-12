@@ -3,9 +3,10 @@ define([
     'backbone',
     'marionette',
     'hbs!templates/preset-detail',
-    'hbs!templates/preset-detail-setting',
+    'hbs!templates/preset-detail-setting'
 
-], function(_, Backbone, Marionette, detailTemplate, settingTemplate) {
+], function(_, Backbone, Marionette,
+    detailTemplate, settingTemplate) {
 
     var PresetDetail = Marionette.ItemView.extend({
         template: detailTemplate,

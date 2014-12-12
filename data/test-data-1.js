@@ -53,6 +53,7 @@ module.exports = {
         _user: 'george@monserrat.com',
         _type: new ObjectID("200000000000000000000001"),
         created: new Date('12, 03, 2014'),
+        description: 'This is a nice flappy bass drum.',
         settings: {
             'Low band' : 'On',
             'Low peak/shelf' : 'peak',
@@ -76,6 +77,7 @@ module.exports = {
         _user: 'george@monserrat.com',
         _type: new ObjectID("200000000000000000000001"),
         created: new Date('12, 04, 2014'),
+        description: 'W-Axl-yrical.',
         settings: {
             'Low band' : 'On',
             'Low peak/shelf' : 'peak',
@@ -99,6 +101,7 @@ module.exports = {
         _user: 'lee@theark.com',
         _type: new ObjectID("200000000000000000000001"),
         created: new Date('12, 04, 2014'),
+        description: 'No worries.',
         settings: {
             'Low band' : 'On',
             'Low peak/shelf' : 'peak',
@@ -122,6 +125,7 @@ module.exports = {
         _user: 'lee@theark.com',
         _type: new ObjectID("200000000000000000000002"),
         created: new Date('12, 04, 2014'),
+        description: 'Simple compressor for track x.',
         settings: {
             'Mode' : 'creative',
             'Attack (ms)' : '20',
@@ -137,6 +141,7 @@ module.exports = {
         _user: 'lee@theark.com',
         _type: new ObjectID("200000000000000000000003"),
         created: new Date('12, 05, 2014'),
+        description: 'Rinse and repeat',
         settings: {
             'Delay' : '300ms',
             'Feedback (ms)' : '75',
