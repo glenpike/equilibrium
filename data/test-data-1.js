@@ -32,19 +32,169 @@ module.exports = {
         _id: new ObjectID("200000000000000000000001"),
         name: '4 Band EQ',
         created: new Date('12, 01, 2014'),
-        fields: {
-
-        }
+        fields: [{
+            label: "Low band",
+            type: 'toggle',
+            values: ['On', 'Off']
+        },{
+            label: "Low peak/shelf",
+            type: 'toggle',
+            values: ['peak', 'shelf']
+        },{
+            label: "Low freq (Hz)",
+            type: 'log-range',
+            values: ['20', '300']
+        },{
+            label: "Low gain (dB)",
+            type: 'range',
+            values: ['-12', '12']
+        },{
+            label: "Low/Mid band",
+            type: 'toggle',
+            values: ['On', 'Off']
+        },{
+            label: "Low//Mid Hi/Low Q",
+            type: 'toggle',
+            values: ['Low', 'Hi']
+        },{
+            label: "Low/Mid freq (Hz)",
+            type: 'log-range',
+            values: ['80', '1600']
+        },{
+            label: "Low/Mid gain (dB)",
+            type: 'range',
+            values: ['-12', '12']
+        },{
+            label: "Hi/Mid band",
+            type: 'toggle',
+            values: ['On', 'Off']
+        },{
+            label: "Hi//Mid Hi/Low Q",
+            type: 'toggle',
+            values: ['Low', 'Hi']
+        },{
+            label: "Hi/Mid freq (kHz)",
+            type: 'log-range',
+            values: ['0.3', '7']
+        },{
+            label: "Hi/Mid gain (dB)",
+            type: 'range',
+            values: ['-12', '12']
+        },{
+            label: "Hi band",
+            type: 'toggle',
+            values: ['On', 'Off']
+        },{
+            label: "Hi peak/shelf",
+            type: 'toggle',
+            values: ['peak', 'shelf']
+        },{
+            label: "Hi freq (kHz)",
+            type: 'log-range',
+            values: ['1.2', '25']
+        },{
+            label: "Hi gain (dB)",
+            type: 'range',
+            values: ['-12', '12']
+        }]
     },
     {
         _id: new ObjectID("200000000000000000000002"),
-        name: 'Compressor',
-        created: new Date('12, 01, 2014')
+        name: 'Square One Compressor',
+        created: new Date('12, 01, 2014'),
+        fields: [{
+            label: "Mode",
+            type: 'select',
+            values: ['creative', 'vintage', 'hard knee']
+        },{
+            label: "Attack (ms)",
+            type: 'log-range',
+            values: ['0.1', '20']
+        },{
+            label: "Release (ms)",
+            type: 'log-range',
+            values: ['50', '2500']
+        },{
+            label: "Threshold (dBu)",
+            type: 'range',
+            values: ['-50', '25']
+        },{
+            label: "Ratio (ms)",
+            type: 'log-range',
+            values: ['infinity', '1:1']
+        },{
+            label: "Presence (dB)",
+            type: 'range',
+            values: ['0', '30']
+        },{
+            label: "Make up (dB)",
+            type: 'range',
+            values: ['0', '30']
+        }]
     },
     {
         _id: new ObjectID("200000000000000000000003"),
-        name: 'Delay',
-        created: new Date('12, 01, 2014')
+        name: 'Analog Delay',
+        created: new Date('12, 01, 2014'),
+        fields: [{
+            label: "Mode",
+            type: 'toggle',
+            values: ['short', 'long']
+        },{
+            label: "Delay time (ms)",
+            type: 'range',
+            values: ['40', '80']
+        },{
+            label: "Mix",
+            type: 'range',
+            values: ['0', '10']
+        },{
+            label: "Feedback",
+            type: 'range',
+            values: ['0', '10']
+        },{
+            label: "Loop Type",
+            type: 'toggle',
+            values: ['int. loop', 'ext. loop']
+        },{
+            label: "Loop Gain",
+            type: 'range',
+            values: ['0', '10']
+        },{
+            label: "Output Level",
+            type: 'range',
+            values: ['0', '10']
+        }]
+    },
+    {
+        _id: new ObjectID("200000000000000000000004"),
+        name: 'Digital Delay',
+        created: new Date('12, 01, 2014'),
+        fields: [{
+            label: "Delay time (ms)",
+            type: 'range',
+            values: ['40', '5000']
+        },{
+            label: "Mix",
+            type: 'range',
+            values: ['0', '10']
+        },{
+            label: "Feedback",
+            type: 'range',
+            values: ['0', '10']
+        },{
+            label: "LFO Rate (Hz)",
+            type: 'log-range',
+            values: ['0', '10']
+        },{
+            label: "LFO Depth",
+            type: 'range',
+            values: ['0', '10']
+        },{
+            label: "Output Level",
+            type: 'range',
+            values: ['0', '10']
+        }]
     }],
 
     presets: [{
@@ -139,14 +289,16 @@ module.exports = {
         _id: new ObjectID("300000000000000000000005"),
         name: 'Dub delay',
         _user: 'lee@theark.com',
-        _type: new ObjectID("200000000000000000000003"),
+        _type: new ObjectID("200000000000000000000004"),
         created: new Date('12, 05, 2014'),
         description: 'Rinse and repeat',
         settings: {
-            'Delay' : '300ms',
-            'Feedback (ms)' : '75',
-            'Level' : '10',
-            'Detune' : '0'
+            'Delay time (ms)' : '300ms',
+            'Mix' : '10',
+            'Feedback' : '7.5',
+            'LFO Rate (Hz)' : '0.5',
+            'LFO Depth' : '1',
+            'Output Level' : '6'
         }
     }]
 };
