@@ -47,6 +47,7 @@ app.use(function isLoggedIn(req, res, next) {
 app.use('/presets', presets)
 app.use('/auth', auth)
 app.use('/user', user)
+app.use('/types', types)
 
 app.use('/', function(req, res) {
     console.log('hello')
@@ -54,7 +55,6 @@ app.use('/', function(req, res) {
 })
 //TODO / FIXME - not public.
 //app.use('/users', users)
-//app.use('/types', types)
 
 app.listen(3000)
 

@@ -20,7 +20,7 @@ types.get('/', function(req, res, next) {
             res.send(results)
         })
 })
-
+/*
 types.post('/', function(req, res, next) {
     req.collection.insert(req.body, {}, function(e, results) {
         if(e) {
@@ -29,7 +29,7 @@ types.post('/', function(req, res, next) {
         res.send(results)
     })
 })
-
+*/
 types.get('/:id', function(req, res, next) {
     req.collection.findById(req.params.id, function(e, result) {
         if(e) {
@@ -38,7 +38,7 @@ types.get('/:id', function(req, res, next) {
         res.send(result)
     })
 })
-
+/*
 types.put('/:id', function(req, res, next) {
     req.collection.updateById(req.params.id, {$set:req.body}, {safe:true, multi:false}, function(e, result) {
         if(e) {
@@ -56,5 +56,5 @@ types.delete('/:id', function(req, res, next) {
         res.send((1===result) ? {msg:'success'}:{msg:'error'})
     })
 })
-
+*/
 module.exports = types;

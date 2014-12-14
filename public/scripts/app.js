@@ -2,12 +2,9 @@ define([
     'underscore',
     'backbone',
     'marionette',
-    'hbs!templates/app',
-    'hbs!templates/profile',
-    'views/presets',
-    'views/preset-detail'
-], function(_, Backbone, Marionette, template, profileTemplate,
-    PresetsView, PresetDetail) {
+    'radio',
+    'hbs!templates/app'
+], function(_, Backbone, Marionette, Radio, template) {
 
     var App = new Backbone.Marionette.Application();
 
@@ -15,56 +12,73 @@ define([
         appRegion: '.js-app'
     });
 
-    var ProfileView = Marionette.ItemView.extend({
-        template: profileTemplate,
-        modelEvents: {
-            'change': 'render'
-        }
-    });
-
-
-
     function _setup(app) {
-        //No logic in here at the moment...
         app.models.user = new Backbone.Model();
         app.models.user.urlRoot = 'user';
 
         app.collections.presets = new Backbone.Collection();
         app.collections.presets.url = 'presets';
+        app.collections.types = new Backbone.Collection();
+        app.collections.types.url = 'types';
+        app.appRegion.show(app.views.layoutView);
 
-        var LayoutView = Marionette.LayoutView.extend({
-            template: template,
+        app.dataChannel = new Backbone.Radio.channel('data');
 
-            regions: {
-                profile: '.js-profile-container',
-                presets: '.js-presets-list',
-                presetView: '.js-preset-view'
-            }
+        app.dataChannel.reply('presets', function() {
+            return app.collections.presets;
+        });
+        app.dataChannel.reply('preset', function(id) {
+            return app.collections.presets.get(id);
+        });
+        app.dataChannel.reply('type', function(id) {
+            return app.collections.types.get(id);
+        });
+        app.dataChannel.reply('user', function() {
+            return app.models.user;
         });
 
-        app.views.presetsView = new PresetsView({ collection: app.collections.presets });
-        app.views.profileView = new ProfileView({ model: app.models.user })
+        app.routeChannel = new Backbone.Radio.channel('route');
 
-        app.views.layoutView = new LayoutView();
-
-        app.views.layoutView.on('show', function() {
-            //console.log(this.el)
-            this.profile.show(app.views.profileView);
-            this.presets.show(app.views.presetsView);
-        });
-
-        App.appRegion.show(app.views.layoutView);
     }
+
+    var pages = {
+        'presets': { 'path': 'pages/edit-preset' },
+        'home': { 'path': 'pages/home' }
+    };
+
+    App.viewPage = function(page, params) {
+        var pageDef;
+
+        console.log('viewPage ', arguments);
+
+        if(!page) {
+            page = 'home';
+        }
+
+        if(App.currentRoute == page) {
+            App.routeChannel.trigger('route:' + page, {params: params});
+            return;
+        }
+        App.currentRoute = page;
+
+        pageDef = pages[page];
+
+        if(App.currentPage) {
+            App.currentPage.destroy();
+            App.currentPage = null;
+        }
+
+        require([pageDef.path], function (Page) {
+            console.log('Page loaded ', page);
+            App.currentPage = new Page();
+            App.currentPage.init({params: params});
+            App.appRegion.show(App.currentPage.getView());
+        });
+    };
 
     App.viewPreset = function(id) {
-        var model = this.collections.presets.get(id)
-        console.log('viewPreset ', id, ' model ', model);
-
-        this.views.layoutView.presetView.show(new PresetDetail({ model: model }));
-    }
-
-    App.defaultView = function() {
-        console.log('defaultView ', arguments)
+        console.log('viewPreset');
+        this.viewPage('home', id)
     }
 
     App.on('before:start', function() {
@@ -82,9 +96,9 @@ define([
 
         this.router = new Marionette.AppRouter({
             appRoutes: {
-                // 'dashboard/:edit':'viewPage',
-                'presets/:id': 'viewPreset',
-                '*other': 'defaultView'
+                ':page/:id': 'viewPage',
+                ':id': 'viewPreset',
+                '*other': 'viewPage'
             },
             controller: this
         });
@@ -99,6 +113,7 @@ define([
                 app.collections.presets.fetch({
                     success: function() {
                         console.log('success presets: ', arguments)
+                        app.collections.types.fetch();
                         Backbone.history.start();
                     },
                     error: function() {
@@ -110,7 +125,6 @@ define([
                 console.log('error user: ', arguments)
             }
         });
-
     });
 
     return App;
