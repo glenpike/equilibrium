@@ -1,6 +1,5 @@
 /* jshint sub: true */
 /* global require */
-//'use strict';
 
 var ObjectID = require('mongodb').ObjectID,
     DBRef = require('mongodb').DBRef,
@@ -29,179 +28,175 @@ module.exports = {
     }],
 
     types: [{
-        _id: new ObjectID("200000000000000000000001"),
+        _id: new ObjectID('200000000000000000000001'),
         name: '4 Band EQ',
         created: new Date('12, 01, 2014'),
         fields: [{
-            label: "Low band",
+            label: 'Low band',
             type: 'toggle',
             values: ['On', 'Off']
         },{
-            label: "Low peak/shelf",
+            label: 'Low peak/shelf',
             type: 'toggle',
             values: ['peak', 'shelf']
         },{
-            label: "Low freq (Hz)",
+            label: 'Low freq (Hz)',
             type: 'log-range',
             values: ['20', '300']
         },{
-            label: "Low gain (dB)",
+            label: 'Low gain (dB)',
             type: 'range',
             values: ['-12', '12']
         },{
-            label: "Low/Mid band",
+            label: 'Low/Mid band',
             type: 'toggle',
             values: ['On', 'Off']
         },{
-            label: "Low//Mid Hi/Low Q",
+            label: 'Low/Mid Hi/Low Q',
             type: 'toggle',
             values: ['Low', 'Hi']
         },{
-            label: "Low/Mid freq (Hz)",
+            label: 'Low/Mid freq (Hz)',
             type: 'log-range',
             values: ['80', '1600']
         },{
-            label: "Low/Mid gain (dB)",
+            label: 'Low/Mid gain (dB)',
             type: 'range',
             values: ['-12', '12']
         },{
-            label: "Hi/Mid band",
+            label: 'Hi/Mid band',
             type: 'toggle',
             values: ['On', 'Off']
         },{
-            label: "Hi//Mid Hi/Low Q",
-            type: 'toggle',
-            values: ['Low', 'Hi']
-        },{
-            label: "Hi/Mid freq (kHz)",
+            label: 'Hi/Mid freq (kHz)',
             type: 'log-range',
             values: ['0.3', '7']
         },{
-            label: "Hi/Mid gain (dB)",
+            label: 'Hi/Mid gain (dB)',
             type: 'range',
             values: ['-12', '12']
         },{
-            label: "Hi band",
+            label: 'Hi band',
             type: 'toggle',
             values: ['On', 'Off']
         },{
-            label: "Hi peak/shelf",
+            label: 'Hi peak/shelf',
             type: 'toggle',
             values: ['peak', 'shelf']
         },{
-            label: "Hi freq (kHz)",
+            label: 'Hi freq (kHz)',
             type: 'log-range',
             values: ['1.2', '25']
         },{
-            label: "Hi gain (dB)",
+            label: 'Hi gain (dB)',
             type: 'range',
             values: ['-12', '12']
         }]
     },
     {
-        _id: new ObjectID("200000000000000000000002"),
+        _id: new ObjectID('200000000000000000000002'),
         name: 'Square One Compressor',
         created: new Date('12, 01, 2014'),
         fields: [{
-            label: "Mode",
+            label: 'Mode',
             type: 'select',
             values: ['creative', 'vintage', 'hard knee']
         },{
-            label: "Attack (ms)",
+            label: 'Attack (ms)',
             type: 'log-range',
             values: ['0.1', '20']
         },{
-            label: "Release (ms)",
+            label: 'Release (ms)',
             type: 'log-range',
             values: ['50', '2500']
         },{
-            label: "Threshold (dBu)",
+            label: 'Threshold (dBu)',
             type: 'range',
             values: ['-50', '25']
         },{
-            label: "Ratio (ms)",
+            label: 'Ratio (ms)',
             type: 'log-range',
             values: ['infinity', '1:1']
         },{
-            label: "Presence (dB)",
+            label: 'Presence (dB)',
             type: 'range',
             values: ['0', '30']
         },{
-            label: "Make up (dB)",
+            label: 'Make up (dB)',
             type: 'range',
             values: ['0', '30']
         }]
     },
     {
-        _id: new ObjectID("200000000000000000000003"),
+        _id: new ObjectID('200000000000000000000003'),
         name: 'Analog Delay',
         created: new Date('12, 01, 2014'),
         fields: [{
-            label: "Mode",
+            label: 'Mode',
             type: 'toggle',
             values: ['short', 'long']
         },{
-            label: "Delay time (ms)",
+            label: 'Delay time (ms)',
             type: 'range',
             values: ['40', '80']
         },{
-            label: "Mix",
+            label: 'Mix',
             type: 'range',
             values: ['0', '10']
         },{
-            label: "Feedback",
+            label: 'Feedback',
             type: 'range',
             values: ['0', '10']
         },{
-            label: "Loop Type",
+            label: 'Loop Type',
             type: 'toggle',
             values: ['int. loop', 'ext. loop']
         },{
-            label: "Loop Gain",
+            label: 'Loop Gain',
             type: 'range',
             values: ['0', '10']
         },{
-            label: "Output Level",
+            label: 'Output Level',
             type: 'range',
             values: ['0', '10']
         }]
     },
     {
-        _id: new ObjectID("200000000000000000000004"),
+        _id: new ObjectID('200000000000000000000004'),
         name: 'Digital Delay',
         created: new Date('12, 01, 2014'),
         fields: [{
-            label: "Delay time (ms)",
+            label: 'Delay time (ms)',
             type: 'range',
             values: ['40', '5000']
         },{
-            label: "Mix",
+            label: 'Mix',
             type: 'range',
             values: ['0', '10']
         },{
-            label: "Feedback",
+            label: 'Feedback',
             type: 'range',
             values: ['0', '10']
         },{
-            label: "LFO Rate (Hz)",
+            label: 'LFO Rate (Hz)',
             type: 'log-range',
             values: ['0', '10']
         },{
-            label: "LFO Depth",
+            label: 'LFO Depth',
             type: 'range',
             values: ['0', '10']
         },{
-            label: "Output Level",
+            label: 'Output Level',
             type: 'range',
             values: ['0', '10']
         }]
     }],
 
     presets: [{
-        _id: new ObjectID("300000000000000000000001"),
+        _id: new ObjectID('300000000000000000000001'),
         name: 'Kick Drum EQ',
         _user: 'george@monserrat.com',
-        _type: new ObjectID("200000000000000000000001"),
+        _type: new ObjectID('200000000000000000000001'),
         created: new Date('12, 03, 2014'),
         description: 'This is a nice flappy bass drum.',
         settings: {
@@ -222,10 +217,10 @@ module.exports = {
             'Hi gain' : '+4'
         }
     },{
-        _id: new ObjectID("300000000000000000000002"),
+        _id: new ObjectID('300000000000000000000002'),
         name: 'Rock Male Vocals EQ',
         _user: 'george@monserrat.com',
-        _type: new ObjectID("200000000000000000000001"),
+        _type: new ObjectID('200000000000000000000001'),
         created: new Date('12, 04, 2014'),
         description: 'W-Axl-yrical.',
         settings: {
@@ -246,10 +241,10 @@ module.exports = {
             'Hi gain' : '+4'
         }
     },{
-        _id: new ObjectID("300000000000000000000003"),
+        _id: new ObjectID('300000000000000000000003'),
         name: 'Bass EQ',
         _user: 'lee@theark.com',
-        _type: new ObjectID("200000000000000000000001"),
+        _type: new ObjectID('200000000000000000000001'),
         created: new Date('12, 04, 2014'),
         description: 'No worries.',
         settings: {
@@ -270,10 +265,10 @@ module.exports = {
             'Hi gain' : '-4'
         }
     },{
-        _id: new ObjectID("300000000000000000000004"),
+        _id: new ObjectID('300000000000000000000004'),
         name: 'Vocal Compressor EQ',
         _user: 'lee@theark.com',
-        _type: new ObjectID("200000000000000000000002"),
+        _type: new ObjectID('200000000000000000000002'),
         created: new Date('12, 04, 2014'),
         description: 'Simple compressor for track x.',
         settings: {
@@ -286,10 +281,10 @@ module.exports = {
             'Make up (dB)' : '8'
         }
     },{
-        _id: new ObjectID("300000000000000000000005"),
+        _id: new ObjectID('300000000000000000000005'),
         name: 'Dub delay',
         _user: 'lee@theark.com',
-        _type: new ObjectID("200000000000000000000004"),
+        _type: new ObjectID('200000000000000000000004'),
         created: new Date('12, 05, 2014'),
         description: 'Rinse and repeat',
         settings: {
