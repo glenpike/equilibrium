@@ -3,9 +3,15 @@
         <h3 class="panel-title">Preset {{name}}</h3>
     </div>
     <div class="panel-body">
+        <p><label for="name">Name:</label><input type="text" name="name" value="{{name}}"/></p>
         <p>{{description}}</p>
         <p>Created: {{dateFormat created format="DD-MMM-YYYY"}}</p>
         <ul class="js-preset-details">
         </ul>
+        <div class="btn-group pull-right" role="group" aria-label="...">
+          <button type="button" class="btn btn-success js-save">Save</button>
+          <button type="button" class="btn btn-danger js-delete">Delete</button>
+          <button type="button" class="btn btn-default js-cancel">Cancel</button>
+        </div>
     </div>
 </div>

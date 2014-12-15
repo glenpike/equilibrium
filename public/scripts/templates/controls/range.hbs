@@ -1,4 +1,6 @@
 <li>
     <label>{{label}}</label>
-    <input type ="range" min ="{{values.[0]}}" max="{{values.[1]}}" step ="1" value ="{{values.[0]}}"/>
+    <span class="minval">{{values.[0]}}</span>
+    <input type ="range" name="{{input}}" min ="{{values.[0]}}" max="{{values.[1]}}" value ="{{value}}"/>
+    <span class="maxval">{{values.[1]}}</span>
 </li>

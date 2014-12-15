@@ -6,6 +6,8 @@ define([
     'hbs!templates/app'
 ], function(_, Backbone, Marionette, Radio, template) {
 
+    Backbone.Model.prototype.idAttribute = '_id';
+
     var App = new Backbone.Marionette.Application();
 
     App.addRegions({
@@ -30,12 +32,21 @@ define([
         app.dataChannel.reply('preset', function(id) {
             return app.collections.presets.get(id);
         });
+        app.dataChannel.reply('types', function() {
+            return app.collections.types;
+        });
         app.dataChannel.reply('type', function(id) {
             return app.collections.types.get(id);
         });
         app.dataChannel.reply('user', function() {
             return app.models.user;
         });
+
+        app.dataChannel.comply('update', function(which) {
+            if(app.collections[which]) {
+                app.collections[which].fetch();
+            }
+        })
 
         app.routeChannel = new Backbone.Radio.channel('route');
 
@@ -91,8 +102,6 @@ define([
 
     App.addInitializer(function() {
         console.log('App.initialize ', new Date().getTime());
-
-        Backbone.Model.prototype.idAttribute = '_id';
 
         this.router = new Marionette.AppRouter({
             appRoutes: {

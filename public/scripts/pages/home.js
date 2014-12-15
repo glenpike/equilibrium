@@ -65,6 +65,8 @@ define([
         page.dataChannel = Backbone.Radio.channel('data');
         page.collections.presets = page.dataChannel.request('presets');
         page.models.user = page.dataChannel.request('user');
+
+        console.log('user ', page.models.user);
     }
 
     function createViews() {

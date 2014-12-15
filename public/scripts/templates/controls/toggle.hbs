@@ -1,6 +1,6 @@
 <li>
     <label>{{label}}</label>
     {{#each values}}
-        {{this}}: <input type="radio" name="{{label}}" value="{{this}}">
+        {{this}}: <input type="radio" name="{{../input}}" value="{{this}}" {{isChecked ../value this}}>
     {{/each}}
 </li>
