@@ -60,6 +60,11 @@ presets.get('/:id', function(req, res, next) {
 })
 
 presets.put('/:id', function(req, res, next) {
+    //Annoyance from Backbone - we should use Mongoose and translate _id to id in schema so Backbone id works.
+    //http://dzello.com/blog/2011/12/24/tame-the-mongoid-id-field-in-your-rails-and-backbone-js-app/
+    //http://stackoverflow.com/questions/7034848/mongodb-output-id-instead-of-id
+    delete req.body._id;
+
     req.collection.update({_id: new ObjectID(req.params.id), '_user': req.user._id }, {$set:req.body}, {safe:true, multi:false}, function(e, result) {
         if(e) {
             return next(e)
