@@ -33,8 +33,10 @@ define([
         //serialise form
         var values = page.views.editPresetView.serializeForm();
 
-        page.models.preset.set('name', values.name, {silent: true});
-        page.models.preset.set('settings', values.settings, {silent: true});
+        _.each(values, function(value, key) {
+            console.log(key, ' = ', value);
+            page.models.preset.set(key, value, {silent: true});
+        });
 
         page.models.preset.save({}, {
             success: function(model, response, options) {

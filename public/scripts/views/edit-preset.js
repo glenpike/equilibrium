@@ -51,7 +51,8 @@ define([
             console.log('serializeForm');
             var self = this,
                 settings = this.model.get('settings') || {},
-                name = $('input[name=\'name\']', self.$el).val();
+                name = $('input[name=\'name\']', self.$el).val(),
+                description = $('textarea[name=\'description\']', self.$el).val();
             //set the name too!
 
             _.each(this.fields, function(field, index) {
@@ -59,7 +60,7 @@ define([
                     $('input[name=\'' + field.input + '\']', self.$el).val();
             });
 
-            return { name: name, settings: settings};
+            return { name: name, description: description, settings: settings};
         },
 
         onDestroy: function() {
