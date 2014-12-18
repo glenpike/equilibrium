@@ -33,19 +33,17 @@ define([
         //serialise form
         var values = page.views.editPresetView.serializeForm();
 
-        console.log('serialize form ', values);
-
-        console.log("_id? ", page.models.preset.idAttribute )
-
         page.models.preset.set('name', values.name, {silent: true});
         page.models.preset.set('settings', values.settings, {silent: true});
 
-        page.models.preset.save({
+        page.models.preset.save({}, {
             success: function(model, response, options) {
-                console.log('model saved ', arguments)
+                page.dataChannel.command('update', 'presets');
+                Backbone.history.navigate('/', { trigger: true });
             },
             error: function(model, response, options) {
-                console.log('error saving model ', arguments)
+                console.log('model save error ', arguments);
+                alert('There was an error saving your preset');
             }
         })
     }
@@ -53,13 +51,15 @@ define([
     function handleCancel() {
         Backbone.history.history.back();
     }
+
     function handleDelete() {
         page.models.preset.destroy({
             success: function(model, response, options) {
-                console.log('model deleted ', arguments)
+                Backbone.history.navigate('/', { trigger: true });
             },
             error: function(model, response, options) {
-                console.log('error deleting model ', arguments)
+                console.log('model delete error ', arguments);
+                alert('There was an error deleting your preset');
             }
         });
     }

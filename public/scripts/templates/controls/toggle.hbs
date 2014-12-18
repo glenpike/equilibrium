@@ -1,6 +1,7 @@
-<li>
-    <label>{{label}}</label>
+<li class="form-group">
+    <strong>{{label}}</strong>
     {{#each values}}
-        {{this}}: <input type="radio" name="{{../input}}" value="{{this}}" {{isChecked ../value this}}>
+        <label class="radio-inline"><input type="radio" name="{{../input}}" value="{{this}}" {{isChecked ../value this}}>{{this}}
+        </label>
     {{/each}}
 </li>
