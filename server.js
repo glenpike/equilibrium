@@ -56,6 +56,9 @@ app.use('/', function(req, res) {
 //TODO / FIXME - not public.
 //app.use('/users', users)
 
-app.listen(3000)
+app.listen(3000, function(err, result) {
+    if (err) throw err;
+    console.log('server running on port 3000');
+})
 
 module.exports = app;

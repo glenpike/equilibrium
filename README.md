@@ -1,4 +1,4 @@
-#Dirty demo for an API to CRUD presets
+#Dirty demo for an API to CRUD audio processing presets
 
 Requires MongoDB, nodejs and bower
 (npm install -g bower)
@@ -7,30 +7,25 @@ Requires MongoDB, nodejs and bower
 
 Install all the node modules with:
 
-npm install
+`npm install`
 
 Install bower modules (client JS libs) with:
 
-bower install
+`bower install`
 
 Populate a mongo DB called 'music-group' with:
 
-cd data && node populate.js && cd ../
-
-(test data is in data/test-data-1.js)
-
-Run tests with:
-
-cd ./tests
-
-mocha auth-spec.js
-mocha preset-spec.js
-
-cd ../
+`npm run setup`
 
 Run server with:
 
-node server.js
+`npm start`
+
+Run tests with:
+
+`npm test` 
+
+(requires server to be running)
 
 Visit http://localhost:3000
 
@@ -58,5 +53,3 @@ See a single preset: http://localhost:3000/presets/300000000000000000000002
 Logout: http://localhost:3000/logout
 
 Try visiting /presets when you are logged out.
-
-
