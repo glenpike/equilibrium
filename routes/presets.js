@@ -46,12 +46,12 @@ presets.post('/', function(req, res, next) {
         if(e) {
             return next(e)
         }
-        res.send(results)
+        res.send(results.ops)
     })
 })
 
 presets.get('/:id', function(req, res, next) {
-    req.collection.findOne({_id: new ObjectID(req.params.id), _user: req.user._id }, function(e, result) {
+    req.collection.findOne({_id: ObjectID(req.params.id), _user: req.user._id }, function(e, result) {
         if(e) {
             return next(e)
         }
@@ -65,20 +65,20 @@ presets.put('/:id', function(req, res, next) {
     //http://stackoverflow.com/questions/7034848/mongodb-output-id-instead-of-id
     delete req.body._id;
 
-    req.collection.update({_id: new ObjectID(req.params.id), '_user': req.user._id }, {$set:req.body}, {safe:true, multi:false}, function(e, result) {
+    req.collection.update({_id: ObjectID(req.params.id), '_user': req.user._id }, {$set:req.body}, {safe:true, multi:false}, function(e, result) {
         if(e) {
             return next(e)
         }
-        res.send((1===result) ? {msg:'success'}:{msg:'error'})
+        res.send((1===result.result.n) ? {msg:'success'}:{msg:'error'})
     })
 })
 
 presets.delete('/:id', function(req, res, next) {
-    req.collection.remove({_id: new ObjectID(req.params.id), '_user': req.user._id }, function(e, result) {
+    req.collection.remove({_id: ObjectID(req.params.id), '_user': req.user._id }, function(e, result) {
         if(e) {
             return next(e)
         }
-        res.send((1===result) ? {msg:'success'}:{msg:'error'})
+        res.send((1===result.result.n) ? {msg:'success'}:{msg:'error'})
     })
 })
 

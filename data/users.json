@@ -1,0 +1,2 @@
+{ "_id": "george@monserrat.com", "name": "George Martin", "password": "$2a$08$4NtEyLVgwvfRfOaPk.i4oeftje4TGt94evvfwZNYVuJr6cE6ww6ja", "created": "2014-12-01T00:00:00.000Z"}
+{ "_id": "lee@theark.com", "name": "Lee Scratch Perry", "password": "$2a$08$AUjHhWp2y8SLT8P.V9qBZelm8ux.vTOTqc1vESDFyH5iEwnAv8uoi", "created": "2014-12-01T00:00:00.000Z"}

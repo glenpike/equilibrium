@@ -1,28 +1,28 @@
 var superagent = require('superagent'),
     expect = require('expect.js'),
-    data = require('../data/test-data-1.js'),
+    presets = require('../data/test-presets.js').presets,
     _ = require('lodash'),
     utils = require('./utils');
 
 function getPresets(user) {
-    var presets = [];
-    for(var i = 0; i < data.presets.length;i++) {
-        if(user == data.presets[i]._user) {
-            presets.push(_.clone(data.presets[i]));
+    var presetsClone = [];
+    for(var i = 0; i < presets.length;i++) {
+        if(user == presets[i]._user) {
+            presetsClone.push(_.clone(presets[i]));
         }
     }
-    return presets;
+    return presetsClone;
 }
 
 function createPreset(index) {
-    var preset = _.clone(data.presets[index])
+    var presetClone = _.clone(presets[index])
 
-    delete preset.settings
-    delete preset._id
+    delete presetClone.settings
+    delete presetClone._id
 
-    preset.settings = { A: 1, B: 'two', C: '3' }
+    presetClone.settings = { A: 1, B: 'two', C: '3' }
 
-    return preset
+    return presetClone
 }
 
 describe('presets rest api tests', function() {
