@@ -1,9 +1,17 @@
-#Dirty demo for an API to CRUD audio processing presets
+# Equilibrium
 
-Requires MongoDB, nodejs and bower
-(npm install -g bower)
+Simple Rest API & Front-End demo for users to store presets from digital consoles, etc.
 
-##usage
+Written in Express, Backbone & MarionetteJS
+
+Requires
+* MongoDB database running on 27017 called 'equilibrium'
+* nodejs
+* bower (npm install -g bower)
+
+# Usage
+
+## Install
 
 Install all the node modules with:
 
@@ -13,7 +21,7 @@ Install bower modules (client JS libs) with:
 
 `bower install`
 
-Populate a mongo DB called 'music-group' with:
+Populate your mongo DB called 'equilibrium' with:
 
 `npm run setup`
 
