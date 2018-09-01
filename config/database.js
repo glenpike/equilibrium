@@ -1,3 +1,3 @@
 module.exports = {
-    'url' : 'mongodb://@localhost:27017/music-group'
+    'url' : 'mongodb://@localhost:27017/equilibrium'
 }

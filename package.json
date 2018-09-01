@@ -1,23 +1,25 @@
 {
-  "name": "music-group",
+  "name": "Equilibrium",
   "version": "0.0.1",
-  "description": "Simple Rest API for users to store presets from digital consoles, etc.",
+  "description": "Simple Rest API & Front-End demo for users to store presets from digital consoles, etc.",
   "main": "index.js",
   "scripts": {
-    "setup-users": "mongoimport --db music-group --collection users --drop --file data/users.json",
-    "setup-types": "mongoimport --db music-group --collection types --drop --file data/types.json",
-    "setup-presets": "mongoimport --db music-group --collection presets --drop --file data/presets.json",
+    "setup-users": "mongoimport --db equilibrium --collection users --drop --file data/users.json",
+    "setup-types": "mongoimport --db equilibrium --collection types --drop --file data/types.json",
+    "setup-presets": "mongoimport --db equilibrium --collection presets --drop --file data/presets.json",
     "setup": "npm run setup-users && npm run setup-types && npm run setup-presets",
     "start": "node server.js",
     "test": "mocha tests/"
   },
   "keywords": [
-    "express",
+    "Express",
     "audio",
-    "cloud"
+    "cloud",
+    "Backbone",
+    "MarionetteJS"
   ],
-  "author": "glen@glenpike.co.uk",
-  "license": "ISC",
+  "author": "github@glenpike.co.uk",
+  "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.10.0",
