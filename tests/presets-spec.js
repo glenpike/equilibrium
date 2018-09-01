@@ -1,21 +1,21 @@
 var superagent = require('superagent'),
     expect = require('expect.js'),
     presets = require('../data/test-presets.js').presets,
-    _ = require('lodash'),
+    cloneDeep = require('lodash.clonedeep'),
     utils = require('./utils');
 
 function getPresets(user) {
     var presetsClone = [];
     for(var i = 0; i < presets.length;i++) {
         if(user == presets[i]._user) {
-            presetsClone.push(_.clone(presets[i]));
+            presetsClone.push(cloneDeep(presets[i]));
         }
     }
     return presetsClone;
 }
 
 function createPreset(index) {
-    var presetClone = _.clone(presets[index])
+    var presetClone = cloneDeep(presets[index])
 
     delete presetClone.settings
     delete presetClone._id

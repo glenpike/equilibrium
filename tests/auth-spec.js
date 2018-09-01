@@ -1,6 +1,5 @@
 var superagent = require('superagent'),
     expect = require('expect.js'),
-    _ = require('lodash'),
     utils = require('./utils');
 
 describe('auth rest api tests', function() {
